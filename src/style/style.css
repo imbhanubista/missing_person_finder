@@ -1,0 +1,41 @@
+.card{
+    width: 350px;
+    /* height: 450px; */
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+}
+.login-form-button{
+    background-color: #007373 !important;
+    border: none !important;
+    padding: 7px;
+    width: 200px;
+    color: white;
+    font-size: larger;
+    font-family: cursive !important;
+    border-radius: 5px;
+    cursor: pointer;
+  
+}
+::placeholder{
+    font-size: large;
+}
+.site-page-header{
+    background-color: rgb(7, 33, 80) !important;
+}
+.date_time{
+    margin-left: 350px !important;
+    padding: 7px !important;
+    font-family: cursive !important;
+    background-color: transparent !important;
+    border: none !important;
+    color: white !important;
+}
+.dateFormat{
+    font-size: large;
+    margin-left: 350px !important;
+    color: white !important;
+
+
+}
