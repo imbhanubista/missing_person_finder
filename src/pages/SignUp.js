@@ -26,10 +26,10 @@ const [loading, setLoading] = useState(false)
     values
     )
     if(signupData.data.type==="error"){
-        Swal.fire("Error",signupData.data.msg, "Error")
+        Swal.fire("Error",signupData.data.msg, "error")
         
     }else{
-        Swal.fire("Success", signupData.data.msg,"Success")
+        Swal.fire("Success", signupData.data.msg,"success")
         loginNa("/")
     }
     setLoading(false)

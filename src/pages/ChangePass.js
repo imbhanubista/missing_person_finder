@@ -4,7 +4,6 @@ import {
   Typography,
   Card,
   Comment,
-  InputNumber,
   Divider,
   Input,
   Button,
@@ -23,7 +22,7 @@ const [loading, setLoading] = useState(false)
   // state to store verification code
   const [inputStore, setInputStore] = useState("");
   // navigation after the password is changed
-  const {psw} = useNavigate()
+  const psw = useNavigate()
   // for title
   const { Title } = Typography;
   const location = useLocation();
@@ -40,12 +39,12 @@ const [loading, setLoading] = useState(false)
       }
     );
     if(getChangePass.data.type==="error"){
-      Swal.fire("Error", getChangePass.data.msg, "Error")
+      Swal.fire("Error", getChangePass.data.msg, "error")
     }else{
-      Swal.fire("Success", getChangePass.data.msg, "Success")
+      Swal.fire("Success", getChangePass.data.msg, "success")
+    psw("/")
     }
     setLoading(false)
-    psw("/")
   };
   const inputHandler = (e) => {
     setInputStore(e);

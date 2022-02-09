@@ -27,7 +27,7 @@ const ForgetPass = () => {
       Swal.fire("Error",forgetApi.data.msg,"error")
     }else{
       Swal.fire("Success",forgetApi.data.msg,"success")
-      nav("/changepass?email="+values.email)
+      nav("/reset?email="+values.email)
     }
     setLoading(false)
   }

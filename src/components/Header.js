@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button, Divider, PageHeader, Typography,Tag } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../style/style.css";
+import { useSelector } from "react-redux";
+import LogIn from "../pages/LogIn";
 
 const HeaderTitle = () => {
 
+  // to get data from the store 
+  const selector = useSelector(state=>state.reducers)
+  let headerText = Object.keys(selector).length>0
+  console.log(selector)
   //state to store date
   const [storeDate, setStoreDate]= useState("")
   //for front
@@ -16,24 +22,12 @@ const HeaderTitle = () => {
     headnav("/signup");
   };
   const header2 = () => {
-    head2nav("/");
+    head2nav("/")
   };
 
-  // useEffect(()=>{
-   
-  //     let date = new Date();
-  //     let currentDate = date.getHours()
-  //     if (currentDate>12){
-  //       <div>
-  //         Good Morning
-  //       </div>
-  //     }else{
-  //       <div>
-  //         Good Afternoon
-  //       </div>
-  //     }
-  //   setStoreDate(currentDate)
-  // },[])
+  const header3 =()=>{
+    head2nav("/")
+  }
 
  useEffect(()=>{
   const date = new Date;
@@ -50,27 +44,30 @@ const HeaderTitle = () => {
 
       <PageHeader
         className="site-page-header"
+        
         // onBack={() => null}
         title={
           <Title level={4} style={{ color: "white", cursor: "pointer" }}>
             {" "}
             <strong onClick={header2}> <u>Missing Person Finder</u> </strong> 
           </Title>
+          
         }
        
         tags={ <div className="dateFormat"> {new Date().toLocaleString() } <br />
-         <strong> {storeDate} - Bhanu </strong>
+         <strong> {storeDate} - {Object.keys(selector).length>0 && <> {selector.details.firstname} </> } </strong>
           </div>}
         
         extra={[
           <Button key="3" type="primary" onClick={header1}>
             Sign Up
           </Button>,
-          <Button key="2" onClick={header2}>
+          <Button key="2" onClick={header3}>
             Login
           </Button>,
         ]}
-      />
+    //  style={{position:"sticky"}}
+     />
       {/* </Header> */}
       <Divider />
 
