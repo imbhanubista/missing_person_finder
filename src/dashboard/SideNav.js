@@ -10,10 +10,13 @@ import {
 } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-const {Content, Footer, Sider } = Layout;
+
+const {Content, Footer, Sider, Header } = Layout;
 
 const SideNav=(props)=>{
+
   const navigate = useNavigate()
 
 // to navigate
@@ -29,16 +32,19 @@ const SideNav=(props)=>{
     <Sider
       style={{
         overflow: 'auto',
-        height: '100vh',
+        height: '125vh',
         position: 'fixed',
         left: 0,
-        top: 95,
+        top: 90,
         bottom: 0,
+        
+        
       }}
     >
       <div className="logo" />
+      
       <Menu onClick={handleClick} theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-        <Menu.Item key="/home" icon={<UserOutlined style={{fontSize:25}}/>}>
+        <Menu.Item key="/home" icon={<UserOutlined />}>
           <strong>{selector.details.firstname} {selector.details.lastname}</strong>
         </Menu.Item>
         <Menu.Item key="/postmissing" icon={<FileAddOutlined />} >
@@ -47,7 +53,7 @@ const SideNav=(props)=>{
         <Menu.Item key="/listmissing" icon={<VideoCameraOutlined />}>
           List Missing Person
         </Menu.Item>
-        <Menu.Item key="/found" icon={<UploadOutlined />}>
+        <Menu.Item key="/listfound" icon={<UploadOutlined />}>
           List Found Person
         </Menu.Item>
         <Menu.Item key="/submitlist" icon={<BarChartOutlined />}>
@@ -59,11 +65,14 @@ const SideNav=(props)=>{
         <Menu.Item key="/about" icon={< ContactsOutlined/>}>
           About Us
         </Menu.Item>
+        {/* for calendar */}
+        
       </Menu>
     </Sider>
-    <Layout className="site-layout" style={{ marginLeft: 100,  }}>
-      {/* <Header className="site-layout-background" style={{ padding: 0 }} /> */}
-      <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+    
+    <Layout className="site-layout" >
+      {/* <Header className="site-layout-background"  >  </Header> */}
+      <Content style={{ margin: '1px 40px 0', overflow: 'initial' }}>
         <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>
          {props.children}
         

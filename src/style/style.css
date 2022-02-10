@@ -23,6 +23,7 @@
 }
 .site-page-header{
     background-color: rgb(7, 33, 80) !important;
+    position: sticky !important;
 }
 .date_time{
     margin-left: 350px !important;
@@ -38,4 +39,27 @@
     color: white !important;
 
 
+}
+.site-layout{
+    /* background-color:antiquewhite !important; */
+    margin-left: 50px;
+
+}
+.site-layout .calendar{
+    /* float: right; */
+    width:fit-content;
+}
+.missingCard{
+    border-radius: 50% !important;
+    height: 140px;
+    width: 130px !important;
+    margin: auto;
+}
+.missinglisthead{
+    font-size: 30px;
+    color: red;
+    font-weight: 600;
+}
+hr{
+    width: 70%;
 }

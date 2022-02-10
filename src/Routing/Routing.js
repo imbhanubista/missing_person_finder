@@ -2,20 +2,19 @@ import React,{Suspense}  from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Alert, Spin } from 'antd';
 import {useSelector} from 'react-redux'
-import PostMissing from '../dashboard/PostMissing';
-import ListMissing from '../dashboard/ListMissing'
-import About from '../dashboard/About';
-// import PrivateRoute from './PrivateRoute';
-// import ChangePass from '../pages/ChangePass';
-// import ForgetPass from '../pages/ForgetPass';
-// import LogIn from '../pages/LogIn';
-// import SignUp from '../pages/SignUp';
+import Errors from './Errors';
 const SignUp = React.lazy(()=> import("../pages/SignUp"));
 const LogIn = React.lazy(()=>import("../pages/LogIn"));
 const ForgetPass  = React.lazy(()=>import("../pages/ForgetPass"));
 const ChangePass = React.lazy(()=>import("../pages/ChangePass"))
 const Home = React.lazy(()=>import('../dashboard/Home'));
 const PrivateRoute = React.lazy(()=>import('./PrivateRoute'));
+const PostMissing = React.lazy(()=>import("../dashboard/PostMissing"))
+const ListMissing = React.lazy(()=>import("../dashboard/ListMissing"))
+const About = React.lazy(()=>import("../dashboard/About"))
+const ListFound = React.lazy(()=>import("../dashboard/ListFound"))
+
+
 const Routing = () => {
   // redux state bata data lina selector 
   const selector = useSelector(state=>state.reducers)
@@ -41,10 +40,10 @@ const Routing = () => {
         <Route path='/postmissing' element={<PrivateRoute isLogged={isLogged}><PostMissing/></PrivateRoute>}/>
         <Route path='/listmissing' element={<PrivateRoute isLogged={isLogged}><ListMissing/></PrivateRoute>}/>
         <Route path='/about' element={<PrivateRoute isLogged={isLogged}><About/></PrivateRoute>}/>
+        <Route path='/listfound' element={<PrivateRoute isLogged={isLogged}><ListFound/></PrivateRoute>}/>
 
 
-
-
+        <Route path='/*' element={<Errors/>}/>
     </Routes>
     </BrowserRouter>
     </Suspense>
