@@ -1,14 +1,6 @@
 // import { Header } from "antd/lib/layout/layout";
 import React from "react";
-import {
-  Typography,
-  Card,
-  Comment,
-  Divider,
-  Input,
-  Button,
-  Form,
-} from "antd";
+import { Typography, Card, Comment, Divider, Input, Button, Form } from "antd";
 import HeaderTitle from "../components/Header";
 import ReactCodeInput from "react-code-input";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,19 +9,19 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const ChangePass = () => {
-// for loading the data
-const [loading, setLoading] = useState(false)
+  // for loading the data
+  const [loading, setLoading] = useState(false);
   // state to store verification code
   const [inputStore, setInputStore] = useState("");
   // navigation after the password is changed
-  const psw = useNavigate()
+  const psw = useNavigate();
   // for title
   const { Title } = Typography;
   const location = useLocation();
   const query = new URLSearchParams(location.search);
 
   const onFinish = async (values) => {
-    setLoading(true)
+    setLoading(true);
     let getChangePass = await axios.post(
       "https://ymissing.herokuapp.com/api/auth/reset",
       {
@@ -38,13 +30,13 @@ const [loading, setLoading] = useState(false)
         email: query.get("email"),
       }
     );
-    if(getChangePass.data.type==="error"){
-      Swal.fire("Error", getChangePass.data.msg, "error")
-    }else{
-      Swal.fire("Success", getChangePass.data.msg, "success")
-    psw("/")
+    if (getChangePass.data.type === "error") {
+      Swal.fire("Error", getChangePass.data.msg, "error");
+    } else {
+      Swal.fire("Success", getChangePass.data.msg, "success");
+      psw("/");
     }
-    setLoading(false)
+    setLoading(false);
   };
   const inputHandler = (e) => {
     setInputStore(e);

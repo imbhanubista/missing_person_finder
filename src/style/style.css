@@ -1,65 +1,106 @@
-.card{
-    width: 400px;
-    /* height: 450px; */
-    margin: auto;
-    text-align: center;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    
+.card {
+  width: 400px;
+  /* height: 450px; */
+  margin: auto;
+  text-align: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.login-form-button{
-    background-color: #007373 !important;
-    border: none !important;
-    padding: 7px;
-    width: 200px;
-    color: white;
-    font-size: larger;
-    font-family: cursive !important;
-    border-radius: 5px;
-    cursor: pointer;
-  
+.login-form-button {
+  background-color: #007373 !important;
+  border: none !important;
+  padding: 7px;
+  width: 200px;
+  color: white;
+  font-size: larger;
+  font-family: cursive !important;
+  border-radius: 5px;
+  cursor: pointer;
 }
-::placeholder{
-    font-size: large;
+::placeholder {
+  font-size: large;
 }
-.site-page-header{
-    background-color: rgb(7, 33, 80) !important;
-    position: sticky !important;
+.site-page-header {
+  background-color: rgb(7, 33, 80) !important;
+  position: sticky !important;
 }
-.date_time{
-    margin-left: 350px !important;
-    padding: 7px !important;
-    font-family: cursive !important;
-    background-color: transparent !important;
-    border: none !important;
-    color: white !important;
+.date_time {
+  margin-left: 350px !important;
+  padding: 7px !important;
+  font-family: cursive !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: white !important;
 }
-.dateFormat{
-    font-size: large;
-    margin-left: 350px !important;
-    color: white !important;
+.dateFormat {
+  font-size: large;
+  margin-left: 350px !important;
+  color: white !important;
+}
+.site-layout {
+  /* background-color:antiquewhite !important; */
+  margin-left: 140px;
+}
+.site-layout .calendar {
+  /* float: right; */
+  width: fit-content;
+}
+.missingCard {
+  border-radius: 50% !important;
+  height: 140px;
+  width: 130px !important;
+  margin: auto;
+}
+.missinglisthead {
+  font-size: 30px;
+  color: red;
+  font-weight: 600;
+}
+hr {
+  width: 70%;
+}
+.missinglistsubmit {
+  font-size: 30px;
+  color: rgb(0, 255, 55);
+}
 
+/* th, td {
+    border: 1px solid rgb(99, 92, 92);
+} */
+.dashboard {
+  font-size: 30px;
+  /* margin-left: 15px; */
+}
 
+.card1 {
+  background-color: #f24242 !important;
+  border-radius: 8px !important;
+  /* height:100px !important; */
+  width: fit-content !important;
+  text-align: center !important;
+  color: aliceblue !important;
+  font-size: x-large !important;
+  font-weight: 500 !important;
 }
-.site-layout{
-    /* background-color:antiquewhite !important; */
-    margin-left: 50px;
+.card2 {
+  background-color: #2f4cdd !important;
+  border-radius: 8px !important;
+  width: fit-content !important;
+  text-align: center !important;
+  color: aliceblue !important;
+  font-size: x-large !important;
+  font-weight: 500 !important;
+}
+.card3 {
+  background-color: #48c774 !important;
+  border-radius: 8px !important;
+  width: max-content !important;
+  text-align: center !important;
+  color: aliceblue !important;
+  font-size: x-large !important;
+  font-weight: 500 !important;
+}
 
-}
-.site-layout .calendar{
-    /* float: right; */
-    width:fit-content;
-}
-.missingCard{
-    border-radius: 50% !important;
-    height: 140px;
-    width: 130px !important;
-    margin: auto;
-}
-.missinglisthead{
-    font-size: 30px;
-    color: red;
-    font-weight: 600;
-}
-hr{
-    width: 70%;
+.username{
+  color: aliceblue;
+  font-size: 18px;
 }

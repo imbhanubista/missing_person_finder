@@ -31,8 +31,8 @@ const PostMissing = () => {
 
     return e && e.fileList;
   };
-//  navigation to redirect to list missing data
-const nav = useNavigate()
+  //  navigation to redirect to list missing data
+  const nav = useNavigate();
   // function to handle form data
   const onFinish = async (values) => {
     console.log(values);
@@ -51,9 +51,9 @@ const nav = useNavigate()
       data: formData,
     });
     console.log(postMissing.data);
-    if(postMissing.data.type==="error"){
-      Swal.fire("Error",postMissing.data.msg, "error")
-    } else{
+    if (postMissing.data.type === "error") {
+      Swal.fire("Error", postMissing.data.msg, "error");
+    } else {
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -62,9 +62,8 @@ const nav = useNavigate()
         timer: 1500,
         toast: "true",
       });
-      nav("/listmissing")
+      nav("/listmissing");
     }
-  
   };
 
   return (

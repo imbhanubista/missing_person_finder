@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Divider, PageHeader, Typography, Tag } from "antd";
+import { Button, Divider, PageHeader, Typography, Tag, Avatar, Popover } from "antd";
 import { useNavigate } from "react-router-dom";
 import "../style/style.css";
 import { useSelector } from "react-redux";
@@ -13,7 +13,8 @@ const HeaderTitle = () => {
   const selector = useSelector((state) => state.reducers);
   let headerText = Object.keys(selector).length > 0;
   // console.log(selector)
-  //state to store date
+
+  //state to store date and time for greeting
   const [storeDate, setStoreDate] = useState("");
   //for front
   let { Title } = Typography;
@@ -31,6 +32,8 @@ const HeaderTitle = () => {
     head2nav("/");
   };
 
+
+  // This is the function for greeting
   useEffect(() => {
     const date = new Date();
     let hours = date.getHours();
@@ -50,6 +53,18 @@ const HeaderTitle = () => {
     head2nav("/");
   };
 
+  const content =(
+    <div>
+       <Button type="danger" onClick={logout} > 
+          <strong>Logout</strong>
+        </Button>
+    </div>
+  )
+// for time only
+  var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+// end time
   return (
     <>
       {/* <Header> */}
@@ -67,21 +82,25 @@ const HeaderTitle = () => {
           </Title>
         }
         tags={
-          Object.keys(selector).length === 0 ? (
-            <div className="dateFormat"> {new Date().toLocaleString()}</div>
-          ) : (
-            <strong className="dateFormat">
-              {" "}
-              {storeDate}{" "}
-              <div
-                className="dateFormat"
-                style={{ fontSize: 14, fontFamily: "cursive" }}
-              >
-                {" "}
-                {selector.details.firstname} {selector.details.lastname}{" "}
-              </div>{" "}
-            </strong>
-          )
+          <div style={{fontSize:15, color:"wheat"}}> {time} </div>
+
+
+          //  Below code is for showing "Greeting according to loggedin user name"
+          // Object.keys(selector).length === 0 ? (
+          //   <div className="dateFormat"> {new Date().toLocaleString()}</div>
+          // ) : (
+          //   <strong className="dateFormat">
+          //     {" "}
+          //     {storeDate}{" "}
+          //     <div
+          //       className="dateFormat"
+          //       style={{ fontSize: 14, fontFamily: "cursive" }}
+          //     >
+          //       {" "}
+          //       {selector.details.firstname} {selector.details.lastname}{" "}
+          //     </div>{" "}
+          //   </strong>
+          // )
         }
         extra={
           Object.keys(selector).length === 0
@@ -93,10 +112,12 @@ const HeaderTitle = () => {
                   Login
                 </Button>,
               ]
-            : [
-                <Button type="danger" onClick={logout}>
-                  Logout
-                </Button>,
+            : [  
+                <Popover content={content} >
+                  <Avatar src= "https://joeschmoe.io/api/v1/random"/>
+                    <strong className="username"> {selector.details.firstname} {selector.details.lastname}  </strong>
+                </Popover>
+              
               ]
         }
         //  style={{position:"sticky"}}
