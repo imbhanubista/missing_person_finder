@@ -28,6 +28,10 @@ const apiUrls =
         markFound : {
             method : "GET",
             url  : "/admin/found"
+        },
+        listFound:{
+            method: "GET",
+            url : "/admin/missing/found"
         }
     }
 

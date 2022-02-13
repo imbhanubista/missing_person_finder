@@ -6,22 +6,24 @@ import Avatar from "antd/lib/avatar/avatar";
 import Layout from "antd/lib/layout/layout";
 import HeaderTitle from "../components/Header";
 import SideNav from "./SideNav";
-
+import { handleListFound } from "../apiHandlingService";
 const ListFound = () => {
-  const selector = useSelector((state) => state.reducers);
+  let selector = useSelector((state) => state.reducers);
   const [foundList, setFoundList] = useState({});
   const [loading, setLoading] = useState(true);
-  console.log(selector);
+  // console.log(selector);
+
   const getFoundData = async () => {
-    const foundlist = await axios({
-      url: "https://ymissing.herokuapp.com/api/admin/missing/found",
-      method: "GET",
-      headers: {
-        apptoken: "App Token " + selector.token,
-      },
-    });
+    let foundList = await handleListFound()
+    // const foundlist = await axios({
+    //   url: "https://ymissing.herokuapp.com/api/admin/missing/found",
+    //   method: "GET",
+    //   headers: {
+    //     apptoken: "App Token " + selector.token,
+    //   },
+    // });
     // console.log(foundlist.data)
-    setFoundList(foundlist.data);
+    setFoundList(foundList);
     setLoading(false);
   };
   useEffect(() => {

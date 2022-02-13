@@ -27,3 +27,8 @@ export const handleMarkFound = async(id)=>{
     let response = await autheticatedApi(apiUrls.afterAuth.markFound.method,`${apiUrls.afterAuth.markFound.url}/${id}`)
     return response
 }
+
+export const  handleListFound = async ()=>{
+    let response = await autheticatedApi(apiUrls.afterAuth.listFound.method, apiUrls.afterAuth.listFound.url)
+    return response
+}
