@@ -6,6 +6,7 @@ import SideNav from "./SideNav";
 import HeaderTitle from "../components/Header";
 import Layout from "antd/lib/layout/layout";
 import Swal from "sweetalert2";
+import { autheticatedApi } from "../api";
 
 const ListMissing = () => {
   const [loading, setLoading] = useState(true);
@@ -15,16 +16,18 @@ const ListMissing = () => {
   const selector = useSelector((state) => state.reducers);
   const getApiData = async () => {
     setLoading(true);
-    const listData = await axios({
-      url: "https://ymissing.herokuapp.com/api/admin/missing",
-      method: "GET",
-      headers: {
-        apptoken: "App Token " + selector.token,
-      },
-    });
-    setList(listData.data);
+    // const listData = await axios({
+    //   url: "https://ymissing.herokuapp.com/api/admin/missing",
+    //   method: "GET",
+    //   headers: {
+    //     apptoken: "App Token " + selector.token,
+    //   },
+    // });
+const listData = await autheticatedApi("GET","/admin/missing")
+
+    setList(listData);
     setLoading(false);
-    console.log(listData.data);
+    console.log(listData);
   };
   useEffect(() => {
     getApiData();
@@ -90,7 +93,7 @@ const ListMissing = () => {
                           </Title>
                         }
                       >
-                        <Meta
+                        <Meta 
                           title={data.name}
                           description={
                             <>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderTitle from "../components/Header";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { handleLoginAPi } from "../apiHandlingService";
 const ForgetPass = () => {
   const { Title } = Typography;
   const [loading, setLoading] = useState(false);
@@ -20,16 +21,23 @@ const ForgetPass = () => {
   // function for ant form
   const onFinish = async (values) => {
     setLoading(true);
-    let forgetApi = await axios.post(
-      "https://ymissing.herokuapp.com/api/auth/forgot",
-      values
-    );
-    if (forgetApi.data.type === "error") {
+   try{
+    let forgetApi = await handleLoginAPi(values)
+
+    // let forgetApi = await axios.post(
+    //   "https://ymissing.herokuapp.com/api/auth/forgot",
+    //   values
+    // );
+    if (forgetApi.type === "error") {
       Swal.fire("Error", forgetApi.data.msg, "error");
     } else {
-      Swal.fire("Success", forgetApi.data.msg, "success");
+      Swal.fire("Success", forgetApi.msg, "success");
       nav("/reset?email=" + values.email);
     }
+   }
+   catch(e){
+     Swal.fire("Error",e.message,"error")
+   }
     setLoading(false);
   };
   return (

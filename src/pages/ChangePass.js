@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { handleReset } from "../apiHandlingService";
 
 const ChangePass = () => {
   // for loading the data
@@ -22,18 +23,19 @@ const ChangePass = () => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    let getChangePass = await axios.post(
-      "https://ymissing.herokuapp.com/api/auth/reset",
-      {
-        ...values,
-        code: inputStore,
-        email: query.get("email"),
-      }
-    );
-    if (getChangePass.data.type === "error") {
-      Swal.fire("Error", getChangePass.data.msg, "error");
+    let getChangePass = await handleReset({...values, code: inputStore, email:query.get("email")})
+    // let getChangePass = await axios.post(
+    //   "https://ymissing.herokuapp.com/api/auth/reset",
+    //   {
+    //     ...values,
+    //     code: inputStore,
+    //     email: query.get("email"),
+    //   }
+    // );
+    if (getChangePass.type === "error") {
+      Swal.fire("Error", getChangePass.msg, "error");
     } else {
-      Swal.fire("Success", getChangePass.data.msg, "success");
+      Swal.fire("Success", getChangePass.msg, "success");
       psw("/");
     }
     setLoading(false);

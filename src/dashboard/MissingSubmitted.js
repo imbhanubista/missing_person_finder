@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { handleMarkFound } from "../apiHandlingService";
 import HeaderTitle from "../components/Header";
 import SideNav from "./SideNav";
 
@@ -37,20 +38,21 @@ const MissingSubmitted = () => {
   // to handle "mark as found" button
   const handleFound = async (id) => {
     setMarkLoad(true);
-    const getFound = await axios({
-      url: "https://ymissing.herokuapp.com/api/admin/found/" + id,
-      method: "GET",
-      headers: {
-        apptoken: "App Token " + selector.token,
-      },
-    });
-    if (getFound.data.type === "error") {
-      Swal.fire("Error", getFound.data.msg, "error");
+    let getFound =  await handleMarkFound(id)
+    // const getFound = await axios({
+    //   url: `https://ymissing.herokuapp.com/api/admin/found/${id}`,
+    //   method: "GET",
+    //   headers: {
+    //     apptoken: "App Token " + selector.token,
+    //   },
+    // });
+    if (getFound.type === "error") {
+      Swal.fire("Error", getFound.msg, "error");
     } else {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: getFound.data.msg,
+        title: getFound.msg,
         showConfirmButton: false,
         timer: 1500,
         toast: "true",

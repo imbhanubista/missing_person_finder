@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { actionReducer } from "../reducersPage/action/action";
 import { useSelector } from "react-redux";
+import { handleLoginAPi } from "../apiHandlingService";
 
 const LogIn = () => {
   // navigation to handle login button
@@ -41,12 +42,13 @@ const LogIn = () => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    let loginData = await axios.post(
-      "https://ymissing.herokuapp.com/api/auth/login",
-      { email: values.email, password: values.password }
-    );
-    if (loginData.data.type === "error") {
-      Swal.fire("Error", loginData.data.msg, "error");
+    let loginData = await handleLoginAPi(values)
+    // let loginData = await axios.post(
+    //   "https://ymissing.herokuapp.com/api/auth/login",
+    //   { email: values.email, password: values.password }
+    // );
+    if (loginData.type === "error") {
+      Swal.fire("Error", loginData.msg, "error");
     } else {
       Swal.fire({
         position: "top-end",
@@ -56,7 +58,7 @@ const LogIn = () => {
         timer: 1500,
         toast: "true",
       });
-      dispatch(actionReducer(loginData.data));
+      dispatch(actionReducer(loginData));
       loginBtn("/home");
     }
     setLoading(false);
