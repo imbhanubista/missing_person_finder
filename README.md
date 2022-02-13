@@ -26,6 +26,8 @@
 # Forget Password
 ![forgot](https://user-images.githubusercontent.com/76931757/153760216-48f56e99-7859-449f-8adf-475522da1bfb.jpg)
 
+# Reset Password
+![reset](https://user-images.githubusercontent.com/76931757/153761520-5ef126eb-2d8b-4bcd-b2e8-f0ce617389a6.jpg)
 # Create Page
 ![create](https://user-images.githubusercontent.com/76931757/153760056-7f4c1a10-dbb5-4be1-b666-2ac367fb2642.jpg)
 

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import HeaderTitle from "../components/Header";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { handleLoginAPi } from "../apiHandlingService";
+import { handleForgetApi } from "../apiHandlingService";
 const ForgetPass = () => {
   const { Title } = Typography;
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const ForgetPass = () => {
   const onFinish = async (values) => {
     setLoading(true);
    try{
-      let forgetApi = await handleLoginAPi(values)
+      let forgetApi = await handleForgetApi(values)
 
       // let forgetApi = await axios.post(
       //   "https://ymissing.herokuapp.com/api/auth/forgot",
